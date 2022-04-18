@@ -1,12 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Prompt:wght@300&display=swap");
+
 .user-form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .user-form input {
-    width: 400px;
-    height: 15px;
-    padding: 3px;
-    border-radius: 2px;
+  font-family: "Prompt", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  color: #ffffff;
+  background-color: #101523;
+  border-radius: 1.25rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  width: 300px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.user-form input:hover {
+  border: 1px solid #4e9f3d;
+}
+
+.user-avatar-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.user-avatar {
+  line-height: 0;
+  display: flex;
+  margin: 5px;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 50%;
+  transition: linear 0.25s;
+  height: 128px;
+  width: 128px;
+  background: cover;
+}
+.avatar img {
+  border-radius: 50%;
+}
+.user-avatar:hover {
+  transition: ease-out 0.2s;
+  border: 2px solid #4e9f3d;
+  -webkit-transition: ease-out 0.2s;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  font-family: "Prompt", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #101523;
+  border-radius: 1.25rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+label:hover {
+  cursor: pointer;
+  border: 1px solid #4e9f3d;
+}
+
+.user-avatar-label {
+  margin: 10px 0px 50px 0px;
+}
+
+input::placeholder {
+    font-family: "Prompt", sans-serif;
+    font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  text-transform: uppercase;
 }

@@ -7,6 +7,7 @@ const RegisterUser = () => {
   const [avatar, setAvatar] = useState([""]);
   const [email, setEmail] = useState([""]);
   const [password, setPassword] = useState([""]);
+  const [passwordConfirm, setPasswordConfirm] = useState([""])
 
   const handleFileChange = (e) => {
     const img = {
@@ -35,30 +36,50 @@ const RegisterUser = () => {
 
   return (
     <div>
-      {avatar.preview && <img src={avatar.preview} width="100" height="100" />}
-      <hr></hr>
+      <div className="user-avatar-preview">
+        {avatar.preview && (
+          <img
+            className="user-avatar"
+            src={avatar.preview}
+            width="200"
+            height="200"
+          />
+        )}
+      </div>
+
       <form className="user-form" onSubmit={handleDataUpload}>
-        <input
-          type="file"
-          placeholder="Avatar"
-          name="avatar"
-          className="avatar"
-          onChange={handleFileChange}
-        />
+        <div className="user-avatar-label">
+          <label htmlFor="avatar">Escolha sua melhor foto</label>
+          <input
+            type="file"
+            placeholder="Avatar"
+            id="avatar"
+            name="avatar"
+            className="avatar-input"
+            onChange={handleFileChange}
+          />
+        </div>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Digite seu email"
           name="email"
           className="email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Senha"
+          placeholder="Digite sua senha"
           name="password"
           className="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <input
+          type="passwordConfirm"
+          placeholder="Confirme sua senha"
+          name="passwordConfirm"
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+        />
+
         <Button />
       </form>
     </div>

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Prompt:wght@300&display=swap');
+
+
+* {
+    color: aliceblue;
+}
+
+.register-form {
+    margin-top: 15%;
+}
+
+.register-title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Prompt', sans-serif;
+    font-size: 16px;
+}
