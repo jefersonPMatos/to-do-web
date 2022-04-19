@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Prompt:wght@300&display=swap");
+
+input {
+  font-family: "Prompt", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  color: #ffffff;
+  background-color: #101523;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+input:hover {
+  border: 1px solid #4e9f3d;
+}
+
+input::placeholder {
+  font-family: "Prompt", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  text-transform: uppercase;
+}

@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Prompt:wght@300&display=swap");
 
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.register-user-container {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  border: solid 1px rgba(200, 200, 200, 0.4);
+  max-width: 20rem;
+  padding: 1.7rem;
+}
+
 .user-form {
   display: flex;
   align-items: center;
@@ -13,16 +27,16 @@
   font-style: normal;
   color: #ffffff;
   background-color: #101523;
-  border-radius: 1.25rem;
   padding: 0.3rem 0.7rem;
   border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 5px;
   width: 300px;
   text-align: center;
   margin-bottom: 6px;
-}
+} */
 
-.user-form input:hover {
-  border: 1px solid #4e9f3d;
+ .user-form input:hover {
+  border: 1px solid #ffffff;
 }
 
 .user-avatar-preview {
@@ -46,7 +60,7 @@
 }
 .user-avatar:hover {
   transition: ease-out 0.2s;
-  border: 2px solid #4e9f3d;
+  border: 1px solid #ffffff;
   -webkit-transition: ease-out 0.2s;
 }
 
@@ -63,14 +77,14 @@ label {
   text-transform: uppercase;
   color: #ffffff;
   background-color: #101523;
-  border-radius: 1.25rem;
   padding: 0.35rem 0.75rem;
   border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 5px;
 }
 
 label:hover {
   cursor: pointer;
-  border: 1px solid #4e9f3d;
+  border: 1px solid #ffffff;
 }
 
 .user-avatar-label {
@@ -78,10 +92,10 @@ label:hover {
 }
 
 input::placeholder {
-    font-family: "Prompt", sans-serif;
-    font-size: 0.7rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.025rem;
   font-style: normal;
   text-transform: uppercase;
-}
+} 
