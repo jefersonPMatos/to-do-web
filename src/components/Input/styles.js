@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@900&family=Prompt:wght@300&display=swap");
+import styled from "styled-components";
 
-input {
+const Inpt = styled.input`
   font-family: "Prompt", sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.025rem;
@@ -13,17 +13,27 @@ input {
   width: 300px;
   text-align: center;
   margin-bottom: 6px;
-}
+  &:hover {
+    border: 1px solid #ffffff;
+  }
+  ::placeholder {
+    font-family: "Prompt", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.025rem;
+    font-style: normal;
+    text-transform: lowercase;
+  }
+`;
 
-input:hover {
-  border: 1px solid #4e9f3d;
-}
-
-input::placeholder {
+const LabelStyle = styled.label`
   font-family: "Prompt", sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.025rem;
+  letter-spacing: 0.085rem;
   font-style: normal;
   text-transform: uppercase;
-}
+  color: #ffffff;
+`;
+
+export { Inpt, LabelStyle };

@@ -1,9 +1,6 @@
-.user-avatar-preview {
-  display: flex;
-  justify-content: center;
-}
+import styled from "styled-components";
 
-.user-avatar {
+const Container = styled.div`
   line-height: 0;
   display: flex;
   margin: 5px;
@@ -13,12 +10,17 @@
   height: 128px;
   width: 128px;
   background: cover;
-}
-.avatar img {
-  border-radius: 50%;
-}
-.user-avatar:hover {
+  &:hover {
   transition: ease-out 0.2s;
   border: 1px solid #ffffff;
   -webkit-transition: ease-out 0.2s;
-}
+  }
+`;
+
+const Img = styled.img`
+width: ${(props) => props.w || "128px"};
+height: ${(props) => props.h || "128px"} ;
+border-radius: 50%;
+`;
+
+export { Container, Img };
