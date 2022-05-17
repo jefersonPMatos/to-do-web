@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Cadastrar } from "./pages/Cadastrar";
-import { Login } from "./pages/Login";
+import { Login }  from "./pages/Login";
 import { Error } from "./pages/Error";
 
 import { AuthProvider } from "./Contexts/AuthContext";
