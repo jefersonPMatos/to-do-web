@@ -6,12 +6,12 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 import Api from "../../services/Api";
 
-import { Container, Div, Form, P } from "./styles";
+import { Container, Div, Form, P, Input, LabelStyle } from "./styles";
 import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
 import { FileInput } from "../../components/FileInput";
 import { Avatar } from "../../components/Avatar";
 import { Title } from "../../components/Title";
+import { Box } from "../../components/Box"
 
 const schema = yup
   .object({
@@ -67,8 +67,11 @@ export function Cadastrar() {
     <Container>
       <Div>
         <Form onSubmit={handleSubmit(handleDataUpload)}>
+
           <Title>Cadastre-se</Title>
+
           {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
+          <Box h="0.5rem" />
           <FileInput
             type="file"
             onChange={handleFileChange}
@@ -76,32 +79,34 @@ export function Cadastrar() {
             Escolha uma foto
           </FileInput>
 
+          <Box h="2rem" />
+
+          <LabelStyle>Email
           <Input
             type="text"
             placeholder="Digite seu email"
             {...register("email")}
-          >
-            Email
-          </Input>
+          />
+          </LabelStyle>
           <P>{errors.email?.message}</P>
 
+          <LabelStyle> Senha
           <Input
             type="password"
             placeholder="Digite sua senha"
             {...register("password")}
-          >
-            Senha
-          </Input>
+           />
+            </LabelStyle>
           <P>{errors.Password?.message}</P>
 
+          <LabelStyle>Confirme sua senha
           <Input
             type="password"
             placeholder="Confirme sua senha"
             name="confirmPassword"
             {...register("confirmPassword")}
-          >
-            Confirme sua senha
-          </Input>
+          />
+          </LabelStyle>
           <P>{errors.confirmPassword?.message}</P>
 
           <Button>Cadastrar</Button>

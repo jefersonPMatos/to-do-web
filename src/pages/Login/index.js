@@ -1,45 +1,87 @@
-import React, { createContext, useContext } from "react";
-
-import { Context } from "../../Contexts/AuthContext";
-
-import { Container, Form, Div } from "./styles";
-
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Api from "../../services/Api";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom"
 
-import { Input } from "../../components/Input";
+import { AuthContext } from "../../Contexts/AuthContext";
+import Api from "../../services/Api"
+
+import { Container, Form, Div, Input, LabelStyle, P } from "./styles";
+
 import { Button } from "../../components/Button";
 import { Title } from "../../components/Title";
 
-export function Login() {
-  const { register, handleSubmit } = useForm();
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .email("Informe um email válido!")
+      .required("É preciso informar um email!"),
+    password: yup.string().required("Este campo é obrigatório!"),
+  })
+  .required();
 
-  const { authenticated, handleLogin } = useContext(Context);
+export function Login() {
+
+  const navigate = useNavigate()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const { setUser, authenticated, setAuthenticated } = useContext(AuthContext);
+
+  const handleLogin = async (data) => {
+    console.log(data)
+    await Api.post("usuario/login", data)
+    .then((res) => {
+      setAuthenticated(true);
+      const token = res.data.token;
+      localStorage.setItem("token", JSON.stringify(token));
+      Api.defaults.headers.Authorization = token
+      setUser(res.data.user)
+
+      if(authenticated) {
+        navigate("/usuario")
+      } else {
+        return alert("Email ou senha inválido!")
+      }
+
+    })
+    .catch((error) => console.log(error));
+  
+};
 
   return (
     <Container>
       <Div>
         <Title>Login</Title>
         <Form onSubmit={handleSubmit(handleLogin)}>
-          <Input
-            type="text"
-            placeholder="Digite seu email"
-            name="password"
-            {...register("email")}
-          >
+          <LabelStyle>
             Email
-          </Input>
+            <Input
+              type="text"
+              placeholder="Digite seu email"
+              {...register("email")}
+            />
+          </LabelStyle>
+          <P>{errors.email?.message}</P>
 
-          <Input
-            type="password"
-            placeholder="Digite sua senha"
-            name="password"
-            {...register("password")}
-          >
+          <LabelStyle>
             Senha
-          </Input>
+            <Input
+              type="password"
+              placeholder="Digite sua senha"
+              {...register("password")}
+            />
+          </LabelStyle>
+          <P>{errors.password?.message}</P>
+
+          <Button type="submit">Entrar</Button>
         </Form>
-        <Button>Entrar</Button>
       </Div>
     </Container>
   );
