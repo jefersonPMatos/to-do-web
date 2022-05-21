@@ -32,7 +32,7 @@ export function Login() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { setUser, authenticated, setAuthenticated } = useContext(AuthContext);
+  const { user, setUser, authenticated, setAuthenticated } = useContext(AuthContext);
 
   const handleLogin = async (data) => {
     console.log(data)
@@ -43,6 +43,7 @@ export function Login() {
       localStorage.setItem("token", JSON.stringify(token));
       Api.defaults.headers.Authorization = token
       setUser(res.data.user)
+      console.log(user)
 
       if(authenticated) {
         navigate("/usuario")
