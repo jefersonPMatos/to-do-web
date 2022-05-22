@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Cadastrar } from "./pages/Cadastrar";
-import { Login }  from "./pages/Login";
+import { Login } from "./pages/Login";
 import { Error } from "./pages/Error";
-import { User } from './pages/User';
+import { User } from "./pages/User";
 
 import { AuthProvider } from "./Contexts/AuthContext";
+import { ProtectedRoutes } from "./middleware/ProtectedRoutes";
 
 export function App() {
   return (
@@ -16,9 +17,11 @@ export function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/cadastrar" element={<Cadastrar />} />
-          <Route path="/usuario" element={<User />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/usuario" element={<User />} />
+          </Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

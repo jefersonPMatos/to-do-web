@@ -5,10 +5,15 @@ const CheckboxContainer = styled.div`
   height: 35px;
   padding-left: 5px;
   margin: 0px 4px;
+  border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 5px;
-  background-color: ${(props) => (props.checked ? "#97C160" : "#E5E5E5")};
+  background-color: ${(props) => (props.checked ? "#97C160" : "transparent")};
   display: flex;
   align-items: center;
+  &:hover {
+    border: 1px solid #ffffff;
+    cursor: pointer;
+  }
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -21,7 +26,17 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 `;
 
 const Text = styled.label`
-  color: ${(props) => (props.checked ? "#FFF" : "#000")};
+  font-family: "Prompt", sans-serif;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.050rem;
+  font-style: normal;
+  color: ${(props) => (props.checked ? "#000" : "#FFF")};
+  text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledCheckbox = styled.label`
@@ -33,10 +48,12 @@ const StyledCheckbox = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid rgba(200, 200, 200, 0.4);
   img {
     display: ${(props) => (props.checked ? "flex" : "none")};
-    filter: invert(75%) sepia(11%) saturate(6042%) hue- rotate(30deg)
-      brightness(105%) contrast(68%);
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import CheckIcon from "../../assets/images/tick.svg"
-import {Trash, Pen } from "phosphor-react";
 
 
 import {

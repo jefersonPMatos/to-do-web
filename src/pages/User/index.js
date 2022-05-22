@@ -5,8 +5,8 @@ import { AuthContext } from "../../Contexts/AuthContext";
 import { Title } from "../../components/Title";
 import { Avatar } from "../../components/Avatar";
 import { Checkbox } from "../../components/Checkbox";
-import { Button } from "../../components/Button"
-import { Container, Div, Form, P, Input, LabelStyle } from "./styles";
+import { Button } from "../../components/Button";
+import { Container, Div, Form, Input, DivButtons } from "./styles";
 
 import { Pen, Plus, Trash, Check } from "phosphor-react";
 
@@ -15,6 +15,7 @@ export function User() {
   const [todo, setTodo] = useState("");
   const [todoEditing, setTodoEditing] = useState(null);
   const [editingText, setEditingText] = useState("");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const json = localStorage.getItem("todos");
@@ -60,8 +61,8 @@ export function User() {
   return (
     <Container>
       <Div>
-        <Avatar />
-        <Title>Hello </Title>
+        <Avatar w="64px" h="64px" />
+        <Title>Olá, {user.email} </Title>
       </Div>
       <Div>
         <Title>Tarefas</Title>
@@ -72,33 +73,53 @@ export function User() {
             onChange={(e) => setTodo(e.target.value)}
             value={todo}
           />
-          <Button type="submit"><Plus color="#fff" size={24} /></Button>
+          <Button
+            disabled={todo.length === 0}
+            mt={"0px"}
+            mb={"0.4rem"}
+            pdd={"0.1rem "}
+            type="submit"
+          >
+            <Plus color="#fff" size={16} />
+          </Button>
         </Form>
 
         {todos.map((todo) => (
-          <Div key={todo.id}>
+          <Container key={todo.id}>
             {todo.id === todoEditing ? (
-              <input
+              <Input
+                defaultValue={todo.text}
                 type="text"
                 onChange={(e) => setEditingText(e.target.value)}
               />
             ) : (
               <Checkbox>{todo.text}</Checkbox>
             )}
+            <DivButtons>
+              {todo.id === todoEditing ? (
+                <Check
+                  cursor="pointer"
+                  color="#fff"
+                  size={20}
+                  onClick={() => submitEdits(todo.id)}
+                />
+              ) : (
+                <Pen
+                  cursor="pointer"
+                  color="#fff"
+                  size={20}
+                  onClick={() => setTodoEditing(todo.id)}
+                />
+              )}
 
-            {todo.id === todoEditing ? (
-              <Button onClick={() => submitEdits(todo.id)}>
-                <Check color="#fff" size={24} />
-              </Button>
-            ) : (
-              <Button onClick={() => setTodoEditing(todo.id)}>
-                <Pen color="#fff" size={24} />
-              </Button>
-            )}
-            <Button onClick={() => deleteTodo(todo.id)}>
-              <Trash color="#fff" size={24} />
-            </Button>
-          </Div>
+              <Trash
+                cursor="pointer"
+                color="#fff"
+                size={20}
+                onClick={() => deleteTodo(todo.id)}
+              />
+            </DivButtons>
+          </Container>
         ))}
       </Div>
     </Container>

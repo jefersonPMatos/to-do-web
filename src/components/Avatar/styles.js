@@ -7,8 +7,8 @@ const Container = styled.div`
   border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 50%;
   transition: linear 0.25s;
-  height: 128px;
-  width: 128px;
+  height: ${(props) => props.h || "128px"} ;
+  width: ${(props) => props.w || "128px"};
   background: cover;
   &:hover {
   transition: ease-out 0.2s;

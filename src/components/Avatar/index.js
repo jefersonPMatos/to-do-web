@@ -2,14 +2,14 @@ import { Container, Img } from "./styles";
 
 import ProfileDefault from "../../assets/images/perfil.png";
 
-export function Avatar(props) {
+export function Avatar({ src, ...rest }) {
 
   return (
-    <Container>
-      {props.src ? (
-        <Img src={props.src} alt="avatar" />
+    <Container {...rest}>
+      {src ? (
+        <Img src={src} {...rest} alt="avatar" />
       ) : (
-        <Img src={ProfileDefault} alt="avatar" />
+        <Img src={ProfileDefault} {...rest} alt="avatar" />
       )}
       
     </Container>

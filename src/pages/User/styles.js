@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
 `;
 
 const Div = styled.div`
@@ -12,7 +13,7 @@ const Div = styled.div`
   align-items: center;
   flex-direction: column;
   border: solid 1px rgba(200, 200, 200, 0.4);
-  max-width: 20rem;
+  max-width: 50rem;
   padding: 0.5rem;
   border-radius: 5px;
   margin-top: 2.5rem;
@@ -21,7 +22,8 @@ const Div = styled.div`
 const Form = styled.form`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.3rem;
 `;
 
 const P = styled.p`
@@ -43,10 +45,10 @@ const Input = styled.input`
   font-style: normal;
   color: #ffffff;
   background-color: #101523;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 5px;
-  max-width: 12rem;
+  width: 12rem;
   text-align: center;
   margin-bottom: 6px;
   &:hover {
@@ -73,4 +75,12 @@ const LabelStyle = styled.label`
   color: #ffffff;
 `;
 
-export { Container, Div, Form, P, Input, LabelStyle };
+
+const DivButtons = styled.div`
+  gap: 0.3rem;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: row;
+`;
+export { Container, Div, Form, P, Input, LabelStyle, DivButtons };

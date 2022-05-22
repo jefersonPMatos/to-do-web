@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../Contexts/AuthContext";
-import Api from "../../services/Api"
 
 import { Container, Form, Div, Input, LabelStyle, P } from "./styles";
 
@@ -23,38 +22,19 @@ const schema = yup
   .required();
 
 export function Login() {
+  const { Login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  async function handleLogin(data) {
+    await Login(data);
+    navigate("/usuario");
+  }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
-  const { user, setUser, authenticated, setAuthenticated } = useContext(AuthContext);
-
-  const handleLogin = async (data) => {
-    console.log(data)
-    await Api.post("usuario/login", data)
-    .then((res) => {
-      setAuthenticated(true);
-      const token = res.data.token;
-      localStorage.setItem("token", JSON.stringify(token));
-      Api.defaults.headers.Authorization = token
-      setUser(res.data.user)
-      console.log(user)
-
-      if(authenticated) {
-        navigate("/usuario")
-      } else {
-        return alert("Email ou senha inválido!")
-      }
-
-    })
-    .catch((error) => console.log(error));
-  
-};
 
   return (
     <Container>
