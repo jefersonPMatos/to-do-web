@@ -7,6 +7,7 @@ const CheckboxContainer = styled.div`
   margin: 0px 4px;
   border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 5px;
+  transition: background-color 0.5s ease;
   background-color: ${(props) => (props.checked ? "#97C160" : "transparent")};
   display: flex;
   align-items: center;
@@ -30,8 +31,9 @@ const Text = styled.label`
   color: #fff;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.050rem;
+  letter-spacing: 0.05rem;
   font-style: normal;
+  transition: text-decoration ease;
   color: ${(props) => (props.checked ? "#000" : "#FFF")};
   text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
   &:hover {

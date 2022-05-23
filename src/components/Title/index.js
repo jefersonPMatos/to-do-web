@@ -1,10 +1,5 @@
-import { H1} from "./styles";
+import { H1 } from "./styles";
 
-export function Title({ children }) {
-  return (
-    <div>
-      <H1>{children}</H1>
-    </div>
-  );
-};
-
+export function Title({ children, ...rest }) {
+  return <H1 {...rest}>{children}</H1>;
+}

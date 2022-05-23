@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  gap: 0.3rem;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  align-items: center;
+  flex-direction: row;
 `;
 
 const Div = styled.div`
@@ -13,7 +15,18 @@ const Div = styled.div`
   align-items: center;
   flex-direction: column;
   border: solid 1px rgba(200, 200, 200, 0.4);
-  max-width: 50rem;
+  width: 30rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-top: 2.5rem;
+`;
+
+const DivAvatar = styled.div`
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid 1px rgba(200, 200, 200, 0.4);
   padding: 0.5rem;
   border-radius: 5px;
   margin-top: 2.5rem;
@@ -75,7 +88,6 @@ const LabelStyle = styled.label`
   color: #ffffff;
 `;
 
-
 const DivButtons = styled.div`
   gap: 0.3rem;
   display: flex;
@@ -83,4 +95,4 @@ const DivButtons = styled.div`
   align-items: center;
   flex-direction: row;
 `;
-export { Container, Div, Form, P, Input, LabelStyle, DivButtons };
+export { Container, Div, Form, P, Input, LabelStyle, DivButtons, DivAvatar };

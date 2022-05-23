@@ -1,14 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const H1 = styled.h1`
-display: flex;
-justify-content: center;
-font-family: "Prompt", sans-serif;
-font-size: 2rem;
-text-transform: uppercase;
-letter-spacing: 0.025rem;
-font-style: normal;
-color: #ffffff;
+  display: flex;
+  font-size: ${(props) => props.fs || "2.9rem"};
+  color: #393e46;
+  text-transform: uppercase;
 `;
 
 export { H1 };

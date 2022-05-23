@@ -6,7 +6,15 @@ import { Title } from "../../components/Title";
 import { Avatar } from "../../components/Avatar";
 import { Checkbox } from "../../components/Checkbox";
 import { Button } from "../../components/Button";
-import { Container, Div, Form, Input, DivButtons } from "./styles";
+import {
+  Container,
+  Div,
+  Form,
+  Input,
+  DivButtons,
+  P,
+  DivAvatar,
+} from "./styles";
 
 import { Pen, Plus, Trash, Check } from "phosphor-react";
 
@@ -58,12 +66,15 @@ export function User() {
     setTodoEditing(null);
   }
 
+  var name = user.email.substring(0, user.email.lastIndexOf("@"));
+
   return (
     <Container>
-      <Div>
-        <Avatar w="64px" h="64px" />
-        <Title>Olá, {user.email} </Title>
-      </Div>
+      <DivAvatar>
+        <Avatar w="58px" h="58px" src={user.avatar} />
+        <Title>Olá, {name} </Title>
+        <P>{user.email}</P>
+      </DivAvatar>
       <Div>
         <Title>Tarefas</Title>
 
