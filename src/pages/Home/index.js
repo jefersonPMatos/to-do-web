@@ -12,10 +12,10 @@ export function Home() {
     <Container>
       <Card>
         <Title>
-          <CheckSquare color="#393E46" size={50} />
+          <CheckSquare color="#fff" size={50} />
           To Do!
         </Title>
-        <Box w="985px" />
+        <Box w="800px" />
         <Button>
           <StyledLink to="/login">Fazer login</StyledLink>
         </Button>

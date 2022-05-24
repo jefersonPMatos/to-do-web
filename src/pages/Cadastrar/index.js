@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup"
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Api from "../../services/Api";
 
@@ -11,13 +11,13 @@ import { Button } from "../../components/Button";
 import { FileInput } from "../../components/FileInput";
 import { Avatar } from "../../components/Avatar";
 import { Title } from "../../components/Title";
-import { Box } from "../../components/Box"
+import { Box } from "../../components/Box";
 
 const schema = yup
   .object({
     email: yup
       .string()
-      .email()
+      .email("Por favor, informe um email válido!")
       .required("Por favor, informe um email válido!"),
     password: yup
       .string()
@@ -36,7 +36,7 @@ export function Cadastrar() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -67,48 +67,47 @@ export function Cadastrar() {
     <Container>
       <Div>
         <Form onSubmit={handleSubmit(handleDataUpload)}>
-
           <Title>Cadastre-se</Title>
-
           {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
           <Box h="0.5rem" />
-          <FileInput
-            type="file"
-            onChange={handleFileChange}
-          >
+          <FileInput type="file" onChange={handleFileChange}>
             Escolha uma foto
           </FileInput>
-
-          <Box h="2rem" />
-
-          <LabelStyle>Email
-          <Input
-            type="text"
-            placeholder="Digite seu email"
-            {...register("email")}
-          />
+          <Box h="20px" />
+          <LabelStyle>
+            Email
+            <Input
+              type="text"
+              placeholder="Digite seu email"
+              {...register("email")}
+            />
           </LabelStyle>
+          <Box h="15px" />
           <P>{errors.email?.message}</P>
-
-          <LabelStyle> Senha
-          <Input
-            type="password"
-            placeholder="Digite sua senha"
-            {...register("password")}
-           />
-            </LabelStyle>
-          <P>{errors.Password?.message}</P>
-
-          <LabelStyle>Confirme sua senha
-          <Input
-            type="password"
-            placeholder="Confirme sua senha"
-            name="confirmPassword"
-            {...register("confirmPassword")}
-          />
+          <Box h="20px" />
+          <LabelStyle>
+            Senha
+            <Input
+              type="password"
+              placeholder="Digite sua senha"
+              {...register("password")}
+            />
           </LabelStyle>
+          <Box h="15px" />
+          <P>{errors.Password?.message}</P>
+          <Box h="20px" />
+          <LabelStyle>
+            Confirme sua senha
+            <Input
+              type="password"
+              placeholder="Confirme sua senha"
+              name="confirmPassword"
+              {...register("confirmPassword")}
+            />
+          </LabelStyle>
+          <Box h="15px" />
           <P>{errors.confirmPassword?.message}</P>
-
+          <Box h="20px" />
           <Button>Cadastrar</Button>
         </Form>
       </Div>

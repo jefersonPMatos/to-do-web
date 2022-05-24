@@ -6,6 +6,7 @@ import { Title } from "../../components/Title";
 import { Avatar } from "../../components/Avatar";
 import { Checkbox } from "../../components/Checkbox";
 import { Button } from "../../components/Button";
+import { Box } from "../../components/Box";
 import {
   Container,
   Div,
@@ -14,6 +15,7 @@ import {
   DivButtons,
   P,
   DivAvatar,
+  DivInputs,
 } from "./styles";
 
 import { Pen, Plus, Trash, Check } from "phosphor-react";
@@ -66,18 +68,18 @@ export function User() {
     setTodoEditing(null);
   }
 
-  var name = user.email.substring(0, user.email.lastIndexOf("@"));
+  // var name = user.email.substring(0, user.email.lastIndexOf("@"));
 
   return (
     <Container>
       <DivAvatar>
         <Avatar w="58px" h="58px" src={user.avatar} />
-        <Title>Olá, {name} </Title>
-        <P>{user.email}</P>
+        <P>Olá, {user.email} </P>
+        <Box h="15px" />
       </DivAvatar>
       <Div>
-        <Title>Tarefas</Title>
-
+        <Title>To Dos!</Title>
+        <Box h="15px" />
         <Form onSubmit={handleSubmit}>
           <Input
             type="text"
@@ -96,7 +98,7 @@ export function User() {
         </Form>
 
         {todos.map((todo) => (
-          <Container key={todo.id}>
+          <DivInputs key={todo.id}>
             {todo.id === todoEditing ? (
               <Input
                 defaultValue={todo.text}
@@ -130,7 +132,7 @@ export function User() {
                 onClick={() => deleteTodo(todo.id)}
               />
             </DivButtons>
-          </Container>
+          </DivInputs>
         ))}
       </Div>
     </Container>

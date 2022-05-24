@@ -10,6 +10,7 @@ import { Container, Form, Div, Input, LabelStyle, P } from "./styles";
 
 import { Button } from "../../components/Button";
 import { Title } from "../../components/Title";
+import { Box } from "../../components/Box";
 
 const schema = yup
   .object({
@@ -41,6 +42,7 @@ export function Login() {
       <Div>
         <Title>Login</Title>
         <Form onSubmit={handleSubmit(handleLogin)}>
+          <Box h="30px" />
           <LabelStyle>
             Email
             <Input
@@ -49,8 +51,9 @@ export function Login() {
               {...register("email")}
             />
           </LabelStyle>
+          <Box h="15px" />
           <P>{errors.email?.message}</P>
-
+          <Box h="30px" />
           <LabelStyle>
             Senha
             <Input
@@ -59,8 +62,8 @@ export function Login() {
               {...register("password")}
             />
           </LabelStyle>
+          <Box h="15px" />
           <P>{errors.password?.message}</P>
-
           <Button type="submit">Entrar</Button>
         </Form>
       </Div>

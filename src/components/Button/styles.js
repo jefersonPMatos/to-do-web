@@ -5,7 +5,7 @@ const Btn = styled.button`
   color: #ffffff;
   background: #95cd41;
   padding: 0.4rem;
-  border: none;
+  border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 4px;
   max-height: 20rem;
   &:hover {

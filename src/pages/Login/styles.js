@@ -16,60 +16,42 @@ const Div = styled.div`
   justify-items: center;
   align-items: center;
   flex-direction: column;
-  border: solid 1px rgba(200, 200, 200, 0.4);
-  max-width: 20rem;
   padding: 1rem;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-top: 10rem;
 `;
 
 const Input = styled.input`
   display: block;
-  font-family: "Prompt", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.025rem;
-  font-style: normal;
-  color: #ffffff;
-  background-color: #101523;
+  font-size: 1.5rem;
+  color: #393e46;
   padding: 0.3rem 0.7rem;
-  border: 1px solid rgba(200, 200, 200, 0.4);
-  border-radius: 5px;
-  max-width: 12rem;
+  border: 1px solid #393e46;
+  border-radius: 4px;
   text-align: center;
-  margin-bottom: 6px;
   &:hover {
-    border: 1px solid #ffffff;
+    transition: 0.3s ease;
+    border: 1px solid #95cd41;
   }
   ::placeholder {
-    font-family: "Prompt", sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.025rem;
-    font-style: normal;
+    font-size: 1.5rem;
     text-transform: lowercase;
   }
 `;
 
 const LabelStyle = styled.label`
   display: block;
-  font-family: "Prompt", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.085rem;
-  font-style: normal;
+  font-size: 1rem;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
 `;
 
 const P = styled.p`
   display: flex;
-  font-family: "Prompt", sans-serif;
-  color: #fff;
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.1rem;
-  font-style: normal;
-  text-transform: uppercase;
+  align-self: center;
+  color: #ff4f32;
+  font-size: 1rem;
+  text-transform: lowercase;
 `;
 
 export { Container, Form, Div, Input, LabelStyle, P };

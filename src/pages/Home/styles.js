@@ -23,13 +23,13 @@ const StyledLink = styled(Link)`
 
 const P = styled.p`
   display: flex;
-  color: #393e46;
+  color: #fff;
   font-size: 1.7rem;
 `;
 
 const Mark = styled.mark`
   display: flex;
-  color: #eeeeee;
+  color: #fff;
   background: #95cd41;
   padding: 0.5rem;
   border-radius: 4px;
