@@ -2,11 +2,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-`;
-
-const Div = styled.div`
-  display: flex;
   justify-items: center;
   align-items: center;
   flex-direction: column;
@@ -23,34 +18,41 @@ const Form = styled.form`
 const P = styled.p`
   display: flex;
   align-self: center;
-  color: #ff4f32;
-  font-size: 1rem;
-  text-transform: lowercase;
+  color: #eb5353;
+  font-size: 14px;
 `;
 
 const Input = styled.input`
   display: block;
-  font-size: 1.5rem;
-  color: #393e46;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid #393e46;
-  border-radius: 4px;
-  text-align: center;
-  &:hover {
-    transition: 0.3s ease;
-    border: 1px solid #95cd41;
-  }
+  color: #fefefe;
+  font-size: 16px;
+  background-color: transparent;
+  width: 300px;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.39);
+  transition: 0.2s ease;
   ::placeholder {
-    font-size: 1.5rem;
+    font-size: 16px;
     text-transform: lowercase;
+    color: rgba(221, 221, 221, 0.39);
+  }
+  &:hover {
+    border-radius: 4px;
+    background: rgba(221, 221, 221, 0.05);
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #fefefe;
   }
 `;
 
 const LabelStyle = styled.label`
   display: block;
-  font-size: 1rem;
-  text-transform: uppercase;
+  font-size: 16px;
   color: #fff;
 `;
 
-export { Container, Div, Form, P, Input, LabelStyle };
+export { Container, Form, P, Input, LabelStyle };

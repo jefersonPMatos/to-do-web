@@ -1,38 +1,39 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Container = styled.div``;
-
-const Card = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-end;
   flex-direction: row;
-  padding: 1rem;
+  height: 30px;
+  padding: 2rem;
   gap: 1rem;
 `;
 
-const Div = styled.div`
+const TextoDestaque = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: colum;
+  color: #fefefe;
   gap: 0.3rem;
+`;
+
+const Card = styled.div`
+  display: flex;
+  color: #fefefe;
+  margin-left: 200px;
+  margin-right: 200px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: inherit;
 `;
-
-const P = styled.p`
-  display: flex;
-  color: #fff;
-  font-size: 1.7rem;
-`;
-
-const Mark = styled.mark`
-  display: flex;
-  color: #fff;
-  background: #95cd41;
-  padding: 0.5rem;
-  border-radius: 4px;
-`;
-
-export { Container, Div, StyledLink, Card, P, Mark };
+export { Container, Header, TextoDestaque, Card, StyledLink };

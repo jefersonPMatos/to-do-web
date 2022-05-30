@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Cookies from "universal-cookie";
 
 import { AuthContext } from "../../Contexts/AuthContext";
 
@@ -12,20 +13,21 @@ import {
   Div,
   Form,
   Input,
-  DivButtons,
+  ActionButtons,
   P,
-  DivAvatar,
-  DivInputs,
+  Header,
 } from "./styles";
 
 import { Pen, Plus, Trash, Check } from "phosphor-react";
+
+const cookies = new Cookies();
 
 export function User() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
   const [todoEditing, setTodoEditing] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   useEffect(() => {
     const json = localStorage.getItem("todos");
@@ -68,17 +70,29 @@ export function User() {
     setTodoEditing(null);
   }
 
+  function handleLogout() {
+    setUser(null);
+    cookies.remove("token");
+  }
+
   // var name = user.email.substring(0, user.email.lastIndexOf("@"));
 
   return (
     <Container>
-      <DivAvatar>
-        <Avatar w="58px" h="58px" src={user.avatar} />
-        <P>Olá, {user.email} </P>
-        <Box h="15px" />
-      </DivAvatar>
+      <Header>
+        <Box w="10px" />
+        <span>
+          <Avatar w="40px" h="40px" src={user.avatar} />
+        </span>
+        <Box w="10px" />
+        <P>{user.email} </P>
+        <Box w="1100px" />
+        <span>
+          <Button onClick={handleLogout}>Logout</Button>
+        </span>
+      </Header>
       <Div>
-        <Title>To Dos!</Title>
+        <Title>To do</Title>
         <Box h="15px" />
         <Form onSubmit={handleSubmit}>
           <Input
@@ -98,7 +112,7 @@ export function User() {
         </Form>
 
         {todos.map((todo) => (
-          <DivInputs key={todo.id}>
+          <ActionButtons key={todo.id}>
             {todo.id === todoEditing ? (
               <Input
                 defaultValue={todo.text}
@@ -108,7 +122,7 @@ export function User() {
             ) : (
               <Checkbox>{todo.text}</Checkbox>
             )}
-            <DivButtons>
+            <ActionButtons>
               {todo.id === todoEditing ? (
                 <Check
                   cursor="pointer"
@@ -131,8 +145,8 @@ export function User() {
                 size={20}
                 onClick={() => deleteTodo(todo.id)}
               />
-            </DivButtons>
-          </DivInputs>
+            </ActionButtons>
+          </ActionButtons>
         ))}
       </Div>
     </Container>

@@ -3,16 +3,12 @@ import styled from "styled-components";
 const CheckboxContainer = styled.div`
   width: 20rem;
   height: 35px;
-  padding-left: 5px;
-  margin: 0px 4px;
-  border: 1px solid rgba(200, 200, 200, 0.4);
-  border-radius: 5px;
-  transition: background-color 0.5s ease;
-  background-color: ${(props) => (props.checked ? "#97C160" : "transparent")};
+  transition: background-color 0.3s ease;
+  /* background-color: ${(props) =>
+    props.checked ? "#fefefe" : "transparent"}; */
   display: flex;
   align-items: center;
   &:hover {
-    border: 1px solid #ffffff;
     cursor: pointer;
   }
 `;
@@ -27,14 +23,10 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 `;
 
 const Text = styled.label`
-  font-family: "Prompt", sans-serif;
   color: #fff;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.05rem;
-  font-style: normal;
-  transition: text-decoration ease;
-  color: ${(props) => (props.checked ? "#000" : "#FFF")};
+  font-size: 14px;
+  /* transition: ease;
+  color: ${(props) => (props.checked ? "#000" : "#FFF")}; */
   text-decoration: ${(props) => (props.checked ? "line-through" : "none")};
   &:hover {
     cursor: pointer;
@@ -45,13 +37,14 @@ const StyledCheckbox = styled.label`
   width: 23px;
   height: 23px;
   margin-right: 6px;
+  margin-left: 2px;
   border-radius: 50%;
-  background: #f6f6f6;
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(200, 200, 200, 0.4);
   img {
+    filter: ;
     display: ${(props) => (props.checked ? "flex" : "none")};
   }
   &:hover {

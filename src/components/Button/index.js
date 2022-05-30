@@ -1,9 +1,5 @@
-import { Btn } from "./styles";
+import { Container } from "./styles";
 
 export function Button({ children, ...rest }) {
-  return (
-    <>
-      <Btn {...rest}>{children}</Btn>
-    </>
-  );
+  return <Container {...rest}>{children}</Container>;
 }

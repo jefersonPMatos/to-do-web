@@ -1,7 +1,10 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import Cookies from "universal-cookie";
 import dayjs from "dayjs";
 import Api from "../services/Api";
+
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export const AuthContext = createContext({});
 
@@ -10,22 +13,7 @@ const cookies = new Cookies();
 export function AuthProvider({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
   const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const token = cookies.get("token");
-
-    if (token) {
-      Api.defaults.headers["authorization"] = token;
-
-      const fetchData = async () => {
-        const result = await Api.get("usuario/recovery");
-        setUser(result.data.user);
-        console.log(result.data.user);
-      };
-
-      fetchData().catch(console.error);
-    }
-  }, []);
+  const MySwal = withReactContent(Swal);
 
   const Login = async (data) => {
     await Api.post("usuario/login", data)
@@ -33,15 +21,23 @@ export function AuthProvider({ children }) {
         const token = res.data.token;
 
         if (token) {
-          cookies.set("token", token, { maxAge: dayjs().add(7, "day") });
+          cookies.set("token", token, { maxAge: dayjs().add(5, "minutes") });
           Api.defaults.headers["authorization"] = token;
           setUser(res.data.user);
           setAuthenticated(true);
         } else {
-          alert("Usuário ou senha inválido");
+          MySwal.fire({
+            icon: "error",
+            title: "Algo deu errado 😥",
+          });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        MySwal.fire({
+          icon: "error",
+          title: error.response.data.message,
+        })
+      );
   };
 
   return (

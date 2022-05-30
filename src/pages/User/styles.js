@@ -9,13 +9,6 @@ const Container = styled.div`
   padding: 1rem;
 `;
 
-const DivInputs = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
-
 const Div = styled.div`
   gap: 0.3rem;
   display: flex;
@@ -29,7 +22,7 @@ const Div = styled.div`
   width: 80rem;
 `;
 
-const DivAvatar = styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
   border: solid 1px rgba(200, 200, 200, 0.4);
@@ -47,32 +40,41 @@ const Form = styled.form`
 const P = styled.p`
   display: flex;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 14px;
 `;
 
 const Input = styled.input`
   display: block;
-  color: #fff;
-  font-size: 1.5rem;
-  background-color: #101523;
-  border: 1px solid rgba(200, 200, 200, 0.4);
-  border-radius: 5px;
-  text-align: center;
-  width: 30rem;
-  height: 2rem;
-  &:hover {
-    border: 1px solid #fff;
-  }
+  color: #fefefe;
+  font-size: 16px;
+  background-color: transparent;
+  width: 300px;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.39);
+  transition: 0.2s ease;
   ::placeholder {
-    font-size: 0.8rem;
+    font-size: 16px;
+    text-transform: lowercase;
+    color: rgba(221, 221, 221, 0.39);
+  }
+  &:hover {
+    border-radius: 4px;
+    background: rgba(221, 221, 221, 0.05);
+  }
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #fefefe;
   }
 `;
 
-const DivButtons = styled.div`
+const ActionButtons = styled.div`
   gap: 0.3rem;
   display: flex;
   justify-items: center;
   align-items: center;
   flex-direction: row;
 `;
-export { Container, Div, Form, P, Input, DivButtons, DivAvatar, DivInputs };
+export { Container, Div, Form, P, Input, ActionButtons, Header };

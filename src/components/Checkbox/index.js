@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import CheckIcon from "../../assets/images/tick.svg"
-
+import CheckIcon from "../../assets/images/tick.svg";
 
 import {
   CheckboxContainer,
@@ -10,27 +9,17 @@ import {
   Text,
 } from "./styles";
 
-export function Checkbox({children, ...props}) {
-    const [checked, setChecked] = useState(false);
+export function Checkbox({ children, ...props }) {
+  const [checked, setChecked] = useState(false);
 
-    function handleCheckboxChange(){
-        setChecked(!checked);
-     }
+  function handleCheckboxChange() {
+    setChecked(!checked);
+  }
   return (
-    <CheckboxContainer
-    checked={checked}
-      onClick={handleCheckboxChange}
-    >
-      <HiddenCheckbox 
-      onChange={handleCheckboxChange}
-      checked={checked}
-      />
-      <StyledCheckbox checked={checked} >
-      <img
-            alt="check-icon"
-            style={{width: '15px'}}
-            src={CheckIcon}
-         />
+    <CheckboxContainer checked={checked} onClick={handleCheckboxChange}>
+      <HiddenCheckbox onChange={handleCheckboxChange} checked={checked} />
+      <StyledCheckbox checked={checked}>
+        <img alt="check-icon" style={{ width: "30px" }} src={CheckIcon} />
       </StyledCheckbox>
       <Text checked={checked}>{children}</Text>
     </CheckboxContainer>

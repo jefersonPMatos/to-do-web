@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
-import { Title } from "../../components/Title";
+import error from "../../assets/images/404.png";
 
 export function Error() {
-  return (<div><Title>Sorry! Page not found!</Title> </div>);
+  return (
+    <div>
+      <img src={error} alt="404error" />
+    </div>
+  );
 }

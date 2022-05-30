@@ -4,9 +4,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import withReactContent from "sweetalert2-react-content";
+
 import Api from "../../services/Api";
 
-import { Container, Div, Form, P, Input, LabelStyle } from "./styles";
+import { Container, Form, P, Input, LabelStyle } from "./styles";
 import { Button } from "../../components/Button";
 import { FileInput } from "../../components/FileInput";
 import { Avatar } from "../../components/Avatar";
@@ -33,6 +36,8 @@ const schema = yup
 export function Cadastrar() {
   const [avatar, setAvatar] = useState([""]);
 
+  const MySwal = withReactContent(Swal);
+
   const {
     register,
     handleSubmit,
@@ -58,59 +63,65 @@ export function Cadastrar() {
 
     Api.post("usuario/cadastrar", formData)
       .then((res) => {
-        console.log(res.data);
+        MySwal.fire({
+          icon: "success",
+          title: "Cadastro efetuado com sucesso!",
+        });
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        MySwal.fire({
+          icon: "error",
+          title: error.response.data.message,
+        })
+      );
   };
 
   return (
     <Container>
-      <Div>
-        <Form onSubmit={handleSubmit(handleDataUpload)}>
-          <Title>Cadastre-se</Title>
-          {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
-          <Box h="0.5rem" />
-          <FileInput type="file" onChange={handleFileChange}>
-            Escolha uma foto
-          </FileInput>
-          <Box h="20px" />
-          <LabelStyle>
-            Email
-            <Input
-              type="text"
-              placeholder="Digite seu email"
-              {...register("email")}
-            />
-          </LabelStyle>
-          <Box h="15px" />
-          <P>{errors.email?.message}</P>
-          <Box h="20px" />
-          <LabelStyle>
-            Senha
-            <Input
-              type="password"
-              placeholder="Digite sua senha"
-              {...register("password")}
-            />
-          </LabelStyle>
-          <Box h="15px" />
-          <P>{errors.Password?.message}</P>
-          <Box h="20px" />
-          <LabelStyle>
-            Confirme sua senha
-            <Input
-              type="password"
-              placeholder="Confirme sua senha"
-              name="confirmPassword"
-              {...register("confirmPassword")}
-            />
-          </LabelStyle>
-          <Box h="15px" />
-          <P>{errors.confirmPassword?.message}</P>
-          <Box h="20px" />
-          <Button>Cadastrar</Button>
-        </Form>
-      </Div>
+      <Form onSubmit={handleSubmit(handleDataUpload)}>
+        <Title>Cadastre-se</Title>
+        {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
+        <Box h="0.5rem" />
+        <FileInput type="file" onChange={handleFileChange}>
+          Escolha uma foto
+        </FileInput>
+        <Box h="40px" />
+        <LabelStyle>
+          Email
+          <Input
+            type="text"
+            placeholder="Digite seu email"
+            {...register("email")}
+          />
+        </LabelStyle>
+        <Box h="15px" />
+        <P>{errors.email?.message}</P>
+        <Box h="20px" />
+        <LabelStyle>
+          Senha
+          <Input
+            type="password"
+            placeholder="Digite sua senha"
+            {...register("password")}
+          />
+        </LabelStyle>
+        <Box h="15px" />
+        <P>{errors.password?.message}</P>
+        <Box h="20px" />
+        <LabelStyle>
+          Confirme sua senha
+          <Input
+            type="password"
+            placeholder="Confirme sua senha"
+            name="confirmPassword"
+            {...register("confirmPassword")}
+          />
+        </LabelStyle>
+        <Box h="15px" />
+        <P>{errors.confirmPassword?.message}</P>
+        <Box h="20px" />
+        <Button>Cadastrar</Button>
+      </Form>
     </Container>
   );
 }
