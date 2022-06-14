@@ -29,3 +29,11 @@
 - npm i yup
 - npm i axios
 
+## Como rodar o projeto na sua máquina
+- Clone esse repositório
+- instale as dependências ( npm install )
+- execute o projeto (npm start)
+- Clone o repositório da api (https://github.com/jefersonPMatos/todo-api )
+- Execute a api
+- Este repositório roda na porta 3000. 
+- A api roda na porta 5000
