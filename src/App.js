@@ -5,6 +5,7 @@ import { Cadastrar } from "./pages/Cadastrar";
 import { Login } from "./pages/Login";
 import { Error } from "./pages/Error";
 import { User } from "./pages/User";
+
 import { Theme } from "./styles/theme";
 import { Reset } from "./styles/reset";
 

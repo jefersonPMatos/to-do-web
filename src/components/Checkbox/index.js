@@ -19,7 +19,7 @@ export function Checkbox({ children, ...props }) {
     <CheckboxContainer checked={checked} onClick={handleCheckboxChange}>
       <HiddenCheckbox onChange={handleCheckboxChange} checked={checked} />
       <StyledCheckbox checked={checked}>
-        <img alt="check-icon" style={{ width: "30px" }} src={CheckIcon} />
+        <img alt="check-icon" style={{ width: "20px" }} src={CheckIcon} />
       </StyledCheckbox>
       <Text checked={checked}>{children}</Text>
     </CheckboxContainer>

@@ -13,8 +13,8 @@ import { Container, Form, P, Input, LabelStyle } from "./styles";
 import { Button } from "../../components/Button";
 import { FileInput } from "../../components/FileInput";
 import { Avatar } from "../../components/Avatar";
-import { Title } from "../../components/Title";
 import { Box } from "../../components/Box";
+import Card from "../../components/Card";
 
 const schema = yup
   .object({
@@ -77,51 +77,57 @@ export function Cadastrar() {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit(handleDataUpload)}>
-        <Title>Cadastre-se</Title>
-        {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
-        <Box h="0.5rem" />
-        <FileInput type="file" onChange={handleFileChange}>
-          Escolha uma foto
-        </FileInput>
-        <Box h="40px" />
-        <LabelStyle>
-          Email
-          <Input
-            type="text"
-            placeholder="Digite seu email"
-            {...register("email")}
-          />
-        </LabelStyle>
-        <Box h="15px" />
-        <P>{errors.email?.message}</P>
-        <Box h="20px" />
-        <LabelStyle>
-          Senha
-          <Input
-            type="password"
-            placeholder="Digite sua senha"
-            {...register("password")}
-          />
-        </LabelStyle>
-        <Box h="15px" />
-        <P>{errors.password?.message}</P>
-        <Box h="20px" />
-        <LabelStyle>
-          Confirme sua senha
-          <Input
-            type="password"
-            placeholder="Confirme sua senha"
-            name="confirmPassword"
-            {...register("confirmPassword")}
-          />
-        </LabelStyle>
-        <Box h="15px" />
-        <P>{errors.confirmPassword?.message}</P>
-        <Box h="20px" />
-        <Button>Cadastrar</Button>
-      </Form>
-    </Container>
+    <Card>
+      <Container>
+        <Form onSubmit={handleSubmit(handleDataUpload)}>
+          <h2>
+            <span style={{ color: "#00ca4e" }}>{"<"}</span>
+            Cadastrar
+            <span style={{ color: "#00ca4e" }}>{"/>"}</span>
+          </h2>
+          {avatar.preview ? <Avatar src={avatar.preview} /> : <Avatar />}
+          <Box h="15px" />
+          <FileInput type="file" onChange={handleFileChange}>
+            <p>Escolha uma foto</p>
+          </FileInput>
+          <Box h="40px" />
+          <LabelStyle>
+            Email
+            <Input
+              type="text"
+              placeholder="Digite seu email"
+              {...register("email")}
+            />
+          </LabelStyle>
+          <Box h="15px" />
+          <P>{errors.email?.message}</P>
+          <Box h="20px" />
+          <LabelStyle>
+            Senha
+            <Input
+              type="password"
+              placeholder="Digite sua senha"
+              {...register("password")}
+            />
+          </LabelStyle>
+          <Box h="15px" />
+          <P>{errors.password?.message}</P>
+          <Box h="20px" />
+          <LabelStyle>
+            Confirme sua senha
+            <Input
+              type="password"
+              placeholder="Confirme sua senha"
+              name="confirmPassword"
+              {...register("confirmPassword")}
+            />
+          </LabelStyle>
+          <Box h="15px" />
+          <P>{errors.confirmPassword?.message}</P>
+          <Box h="20px" />
+          <Button>Cadastrar</Button>
+        </Form>
+      </Container>
+    </Card>
   );
 }

@@ -1,31 +1,31 @@
-import { Container, Header, TextoDestaque, Card, StyledLink } from "./styles";
+import { TextCard } from "./styles";
 
-import { Title } from "../../components/Title";
-import { Button } from "../../components/Button";
+import Navbar from "../../components/Navbar";
 import { Box } from "../../components/Box";
-
-import Background from "../../assets/images/image-background.png";
+import Card from "../../components/Card";
+import Divider from "../../components/Divider";
 
 export function Home() {
   return (
-    <Container>
-      <Header>
-        <Box w="800px" />
-        <Button>
-          <StyledLink to="/login">login</StyledLink>
-        </Button>
-        <Button>
-          <StyledLink to="/Cadastrar">Cadastre-se</StyledLink>
-        </Button>
-      </Header>
-      <Card>
-        <TextoDestaque>
-          <Title>Você no controle da sua produtividade!</Title>
-        </TextoDestaque>
-        <div>
-          <img width={500} src={Background} alt="destaque" />
-        </div>
-      </Card>
-    </Container>
+    <Card>
+      <Box h="50px" />
+      <TextCard>
+        <h2>
+          <span style={{ color: "#00ca4e" }}>{"<"}</span>
+          what to do?
+          <span style={{ color: "#00ca4e" }}>{"/>"}</span>
+        </h2>
+        <Box h="50px" />
+        <h3>
+          Você no controle da sua produtividade
+          <span style={{ color: "#ff605c" }}>{"!"}</span>
+        </h3>
+      </TextCard>
+      <Box h="50px" />
+      <Divider />
+      <Box jc="center" ac="center">
+        <Navbar />
+      </Box>
+    </Card>
   );
 }

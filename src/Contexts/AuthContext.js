@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
         const token = res.data.token;
 
         if (token) {
-          cookies.set("token", token, { maxAge: dayjs().add(5, "minutes") });
+          cookies.set("token", token, { maxAge: dayjs().add(60, "minutes") });
           Api.defaults.headers["authorization"] = token;
           setUser(res.data.user);
           setAuthenticated(true);
